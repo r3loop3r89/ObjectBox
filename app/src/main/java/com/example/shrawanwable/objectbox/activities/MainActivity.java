@@ -2,6 +2,7 @@ package com.example.shrawanwable.objectbox.activities;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,7 +15,10 @@ import com.example.shrawanwable.objectbox.R;
 import com.example.shrawanwable.objectbox.fragments.DetailsFragment;
 import com.example.shrawanwable.objectbox.fragments.HomeFragment;
 import com.example.shrawanwable.objectbox.fragments.SettingsFragment;
+import com.example.shrawanwable.objectbox.services.BgService;
 import com.example.shrawanwable.objectbox.utils.Utils;
+
+import static com.example.shrawanwable.objectbox.App.spm;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mCtx = this;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(
                     new String[]{
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         changeFragment(HomeFragment.getInstance(), true);
 
+        Utils.checkAutostartAndStart(mCtx);
     }
 
     private void setupTabs() {

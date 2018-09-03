@@ -4,4 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/date_selector_layout"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lvDFList"/>
 </LinearLayout>

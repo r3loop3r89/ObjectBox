@@ -33,12 +33,12 @@ public class SMProviderConfigSettingFragment extends Fragment {
 
         rbSMPCSFGpsProvider.setOnClickListener(rb -> {
             spm.setPROVIDER(LocationManager.GPS_PROVIDER);
-            Utils.showToast(mCtx, "You need to restart the service for changes to take effect");
+            Utils.showRestartServiceToast(mCtx);
         });
 
         rbSMPCSFNetworkProvider.setOnClickListener(rb -> {
             spm.setPROVIDER(LocationManager.NETWORK_PROVIDER);
-            Utils.showToast(mCtx, "You need to restart the service for changes to take effect");
+            Utils.showRestartServiceToast(mCtx);
         });
 
         return v;

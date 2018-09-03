@@ -45,6 +45,7 @@ public class SMDataSaveIntervalConfigSettingFragment extends Fragment {
             String period = etSMDSICSF_Period.getText().toString().trim();
             spm.setPERIOD(Long.parseLong(period));
             spm.setSELECTEDTIMEUNITPOSITION(spSMDSICSF_TimeUnit.getSelectedItemPosition());
+            Utils.showRestartServiceToast(mCtx);
         });
 
         return v;

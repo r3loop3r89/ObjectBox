@@ -12,11 +12,15 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.example.shrawanwable.objectbox.models.LocationEntry;
 import com.example.shrawanwable.objectbox.models.SelectableTimeUnit;
+import com.example.shrawanwable.objectbox.recievers.AutoStartReciever;
+import com.example.shrawanwable.objectbox.utils.Utils;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
+import static com.example.shrawanwable.objectbox.App.locationEntryBox;
 import static com.example.shrawanwable.objectbox.App.spm;
 import static com.example.shrawanwable.objectbox.utils.Utils.TAG;
 
@@ -93,10 +97,24 @@ public class BgService extends Service {
 
         scheduledExecutorService = Executors.newScheduledThreadPool(1);
 
-        scheduledExecutorService.scheduleAtFixedRate(() -> {
+        scheduledExecutorService.scheduleAtFixedRate(
+                () -> {
+                    if (currentLocation != null) {
+                        int batteryLevel = Utils.getBatteryPercentage(mCtx);
+                        LocationEntry locationEntry = new LocationEntry(
+                                currentLocation.getLatitude(),
+                                currentLocation.getLongitude(),
+                                System.currentTimeMillis(),
+                                batteryLevel
+                        );
 
-                }, 0L, spm.getPERIOD(),
-                SelectableTimeUnit.getList().get(spm.getSELECTEDTIMEUNITPOSITION()).getTimeUnit());
+                        locationEntryBox.put(locationEntry);
+                    }
+                }
+                , 0L,
+                spm.getPERIOD(),
+                SelectableTimeUnit.getList().get(spm.getSELECTEDTIMEUNITPOSITION()).getTimeUnit()
+        );
 
         return START_STICKY;
     }
