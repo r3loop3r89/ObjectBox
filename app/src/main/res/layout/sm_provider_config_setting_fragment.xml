@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Location Provider"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rbSMPCSFNetworkProvider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Network Provider" />
+
+        <RadioButton
+            android:id="@+id/rbSMPCSFGpsProvider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GPS Provider (for more accuracy)" />
+    </RadioGroup>
+
+</LinearLayout>
