@@ -122,9 +122,13 @@ public class BgService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        locationManager.removeUpdates(ll);
-        if (!scheduledExecutorService.isShutdown()) {
-            scheduledExecutorService.shutdown();
+        if (locationManager != null) {
+            locationManager.removeUpdates(ll);
+        }
+        if (scheduledExecutorService != null) {
+            if (!scheduledExecutorService.isShutdown()) {
+                scheduledExecutorService.shutdown();
+            }
         }
         IN = null;
         Log.d(TAG, "onDestroy: ");
