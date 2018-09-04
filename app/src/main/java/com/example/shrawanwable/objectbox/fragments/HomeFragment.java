@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
             String text;
             text = "Background service to fetch location not running";
             if (BgService.getInstance() != null) {
-                text = "Fetching location please wait";
+                text = "Fetching location please wait and try again";
                 if (BgService.getInstance().getCurrentLocation() != null) {
                     text = "Current Location : " + BgService.getInstance().getCurrentLocation().getLatitude() + ", " + BgService.getInstance().getCurrentLocation().getLongitude();
                 }

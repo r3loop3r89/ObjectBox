@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
 
@@ -111,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
         if (existingFragment == fragment) {
             //DO NOTHING
         } else {
-
             if (isFirst) {
                 getSupportFragmentManager()
                         .beginTransaction()
