@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.example.shrawanwable.objectbox.R;
 import com.example.shrawanwable.objectbox.services.BgService;
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
 public class HomeFragment extends Fragment {
     private static HomeFragment INSTANCE = null;
@@ -24,6 +27,8 @@ public class HomeFragment extends Fragment {
         }
         return INSTANCE;
     }
+
+    MapView mvHFMap;
 
     @Nullable
     @Override
@@ -45,6 +50,19 @@ public class HomeFragment extends Fragment {
         });
 
         return v;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mvHFMap = view.findViewById(R.id.mvHFMap);
+        mvHFMap.onCreate(savedInstanceState);
+        mvHFMap.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(MapboxMap mapboxMap) {
+
+            }
+        });
     }
 
     private void initViews(View v) {
